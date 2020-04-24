@@ -90,44 +90,44 @@ body{
 const options = {
       // 认证信息
       clientId: 'web',
-      username: 'wlw',
-      password: 'wlw12138',
+      username: '4y47b3q/xxyd',
+      password: 'GVQ28ngUZDO9S1ER',
 }
 
-const client = mqtt.connect('ws://47.92.29.155:8083/mqtt', options)
-client.subscribe('sw_led')
-
+const client = mqtt.connect('wss://4y47b3q.mqtt.iot.gz.baidubce.com:443/mqtt', options)
+client.subscribe('photo')
+client.subscribe('up')
 myChart.setOption(option, true)
 //接受信息
 client.on('message', function (topic, message) {
 	var p1 = message.toString();
  	 //console.log(p1);
 
-	if(topic=="sw_c")
+	if(topic=="up")
 	{
 		var p2 = JSON.parse(p1);
- 
+ 		console.log(p1);
   
-	v1=p1.message.vaule;
-		console.log(v1); 
-		var name; 
-		switch(p1.message.type)
-	{
-		case '1':
-			name="温度";
-        break;
-		case '2':
-			name="湿度";
-        break;
-		default:
-			name="未知设备"
-		break;
+	// v1=p1.message.vaule;
+	// 	console.log(v1); 
+	// 	var name; 
+	// 	switch(p1.message.type)
+	// {
+	// 	case '1':
+	// 		name="温度";
+ //        break;
+	// 	case '2':
+	// 		name="湿度";
+ //        break;
+	// 	default:
+	// 		name="未知设备"
+	// 	break;
         
-		}
-	console.log(name);
-	option.series.data.value = v1;
-	option.series.data.name = name;
-	myChart.setOption(option, true)
+	// 	}
+	// console.log(name);
+	// option.series.data.value = v1;
+	// option.series.data.name = name;
+	// myChart.setOption(option, true)
 	}
 	else
 	{
